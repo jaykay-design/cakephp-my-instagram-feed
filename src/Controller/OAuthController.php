@@ -1,10 +1,10 @@
 <?php
 
-namespace Instagram\Controller;
+namespace MyInstagramFeed\Controller;
 
 use Cake\Core\Configure;
 use Cake\Routing\Router;
-use Instagram\Lib\OAuth;
+use MyInstagramFeed\Lib\OAuth;
 
 class OAuthController extends \App\Controller\AppController
 {
@@ -16,7 +16,7 @@ class OAuthController extends \App\Controller\AppController
 
     public function index()
     {
-        $this->set('client_id', Configure::read('Instagram.App.client_id'));
+        $this->set('client_id', Configure::read('MyInstagramFeed.client_id'));
         $this->set('base_url', Router::fullBaseUrl());
     }
 

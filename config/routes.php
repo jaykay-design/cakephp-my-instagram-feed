@@ -2,8 +2,8 @@
 use Cake\Routing\Router;
 
 Router::plugin(
-    'Instagram',
-    ['path' => '/Instagram'],
+    'MyInstagramFeed',
+    ['path' => '/MyInstagramFeed'],
     function ($routes) {
         $routes->connect('/OAuth/:action', ['controller' => 'OAuth']);
     }

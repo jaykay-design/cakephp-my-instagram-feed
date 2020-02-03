@@ -1,10 +1,11 @@
 <?php
-namespace Instagram\View\Helper;
+namespace MyInstagramFeed\View\Helper;
 
 use Cake\Cache\Cache;
+use Cake\Core\Configure;
 use Cake\Http\Client;
 use Cake\View\Helper;
-use Instagram\Lib\OAuth;
+use MyInstagramFeed\Lib\OAuth;
 
 class InstagramHelper extends Helper
 {
@@ -13,9 +14,7 @@ class InstagramHelper extends Helper
 
     public function initialize(array $config)
     {
-        $config = array_merge(['cache_config' => 'default'], $config);
-
-        $this->__cacheConfig = $config['cache_config'];
+        $this->__cacheConfig = Configure::read('MyInstagramFeed.cache_config');
     }
 
     public function getItems()
@@ -23,7 +22,7 @@ class InstagramHelper extends Helper
         $oauth = OAuth::getOAuthData();
         $token = $oauth['token'];
 
-        $data = Cache::remember('Instagram', function () use ($token) {
+        $data = Cache::remember('MyInstagramFeed', function () use ($token) {
             $client = new Client();
 
             $request = $client->get('https://graph.instagram.com/me/media',
@@ -46,7 +45,7 @@ class InstagramHelper extends Helper
         }, $this->__cacheConfig);
 
         if (array_key_exists('error', $data)) {
-            Cache::delete('Instagram', $this->__cacheConfig);
+            Cache::delete('MyInstagramFeed', $this->__cacheConfig);
 
             return null;
         }
