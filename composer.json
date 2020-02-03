@@ -5,6 +5,7 @@
     "keywords": ["cakephp", "instagram", "plugin"],
     "homepage": "https://github.com/jaykay-design/cakephp-my-instagram-feed",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "John Caprez",
