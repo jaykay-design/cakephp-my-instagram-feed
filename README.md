@@ -43,7 +43,7 @@ public function initialize()
 {
 
     ...
-    $this->loadHelper('Instagram.Instagram');    
+    $this->loadHelper('MyInstagramFeed.MyInstagramFeed');    
     ...
 ```
 
@@ -62,11 +62,9 @@ Default configuration:
     'cache_config' => 'default'
 ],
 ```
-This configuration is automatically merged with your application specific configuration preferentially using any keys you define.
 
 * client_id (string) - The client id provided to you when you [set up](#setup) the app
 * client_secret (string) - The client secret provided to you when you [set up](#setup) the app
-* callback_url (string) - The callback url you provided when you [set up](#setup) the app. It should have this format [Your domain]/MyInstagramFeed/OAuth/authorize
 * cache_config - The cache configuration for the instagram feed data
 
 
@@ -88,7 +86,7 @@ In your template where you want to show your Instagram feed add this code:
 
 ```php
 <?php 
-    $items = $this->Instagram->getItems();
+    $items = $this->MyInstagramFeed->getItems();
     foreach ($items as $item) { ?>
     <a href="<?=$item['permalink']?>">
         <img 
